@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import Comments from './Comments';
 import NewCommnet from './NewComment';
+import Login from './Login'
 
 class App extends Component {
   state = {
     comments: {},
-    isLoading: false
+    isLoading: false,
+    isAuth:false
   };
   sendComment = comment => {
     const { database } = this.props;
@@ -19,6 +21,10 @@ class App extends Component {
     };
     database.ref().update(comments);
   };
+
+  login = (email, passwd) => {
+    console.log('logar', email, passwd)
+  }
 
   componentDidMount() {
     const { database } = this.props;
@@ -37,7 +43,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NewCommnet sendComment={this.sendComment} />
+        { !this.state.isAuth && <Login login={this.login} /> }
+        { this.state.isAuth && <NewCommnet sendComment={this.sendComment} />}
         <Comments comments={this.state.comments} />
         {this.state.isLoading && <p>Carregando...</p>}
       </div>
