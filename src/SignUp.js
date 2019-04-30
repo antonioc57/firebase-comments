@@ -21,33 +21,42 @@ class SignUp extends Component {
     };
     return (
       <div>
-        <h1>Criar Conta</h1>
-        <input
-          type="text"
-          onChange={this.handleChange('email')}
-          placeholder="email"
-        />
-        <input
-          type="password"
-          onChange={this.handleChange('passwd')}
-          placeholder="senha"
-        />
-        <button type="button" onClick={this.createAccount}>
-          Criar conta
-        </button>
-        {this.props.isSignUpError && (
-          <p>
-            <b>Erro: </b>
-            {errorMessages[this.props.signUpError]}
-          </p>
-        )}
-        <button onClick={() => this.props.changeScreen('login')}>
-          Já tenho uma conta, entrar!
-        </button>
+        <h4>Criar Conta</h4>
+        <form className='form-inline'>
+          <input
+            className='form-control mr-2'
+            type="text"
+            onChange={this.handleChange('email')}
+            placeholder="email"
+          />
+          <input
+            className='form-control mr-2'
+            type="password"
+            onChange={this.handleChange('passwd')}
+            placeholder="senha"
+          />
+          <button className='btn btn-primary' type="button" onClick={this.createAccount}>
+            Criar conta
+          </button>
+          <button className='btn' onClick={() => this.props.changeScreen('login')}>
+            Já tenho uma conta, entrar!
+          </button>
         {/*JSON.stringify(this.state)*/}
+        </form>
+        {this.props.isSignUpError && (
+          <div className='card text-white bg-danger mt-3'>
+            <div className='card-header'>Erro ao criar nova conta</div>
+            <div className='card-body'>
+              {errorMessages[this.props.signUpError]}
+            </div>
+          </div>
+        )}
       </div>
     );
   }
 }
 
 export default SignUp;
+
+
+

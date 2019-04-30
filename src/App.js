@@ -113,7 +113,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className='container mt-3'>
         {this.state.isAuth && (
           <User email={this.state.user.email} logout={this.logout} />
         )}

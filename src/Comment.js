@@ -12,11 +12,12 @@ const Comment = ({ c }) => {
     }
   }
   return (
-    <div>
-      Comentário: {comment}
-      <br />
-      Enviado por:{email}
-      <hr />
+    <div className='card mt-3'>
+      <div className='card-body'>
+        {comment}
+        <br />
+        <span className='text-muted'>Enviado por:{email}</span> 
+      </div>
     </div>
   );
 };

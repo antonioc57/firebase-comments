@@ -21,30 +21,36 @@ class Login extends Component {
     };
     return (
       <div>
-        <h1>Login</h1>
-        <input
-          type="text"
-          onChange={this.handleChange('email')}
-          placeholder="email"
-        />
-        <input
-          type="password"
-          onChange={this.handleChange('passwd')}
-          placeholder="senha"
-        />
-        <button type="button" onClick={this.login}>
-          Entrar
-        </button>
+        <h4>Entre para comentar:</h4>
+        <form className='form-inline'>
+            <input
+              className='form-control mr-2'
+              type="text"
+              onChange={this.handleChange('email')}
+              placeholder="email"
+            />
+            <input
+              className='form-control mr-2'
+              type="password"
+              onChange={this.handleChange('passwd')}
+              placeholder="senha"
+            />
+            <button className='btn btn-primary' type="button" onClick={this.login}>
+              Entrar
+            </button>
+            <button className='btn' onClick={() => this.props.changeScreen('signup')}>
+              Criar Conta
+            </button>
+           {/*JSON.stringify(this.state)*/}
+        </form>
         {this.props.isAuthError && (
-          <p>
-            <b>Erro: </b>
-            {errorMessages[this.props.authError]}
-          </p>
+          <div className='card text-white bg-danger mt-3'>
+          <div className='card-header'>Erro ao entrar</div>
+            <div className='card-body'>
+              {errorMessages[this.props.authError]}
+            </div>
+          </div>
         )}
-        <button onClick={() => this.props.changeScreen('signup')}>
-          Criar Conta
-        </button>
-        {/*JSON.stringify(this.state)*/}
       </div>
     );
   }
