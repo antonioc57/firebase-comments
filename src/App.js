@@ -5,6 +5,18 @@ import Login from './Login';
 import SignUp from './SignUp';
 import User from './User';
 import 'bootstrap-css-only';
+import styled from "styled-components";
+
+import papel from './papel-de-parede2.png'
+
+import './styles/main.scss';
+
+
+const Wrapper = styled.div`
+  background:url(${papel}) 0 0 !important;
+  padding: 2rem !important;
+  width:300px;
+`
 
 class App extends Component {
   state = {
@@ -113,7 +125,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className='container mt-3'>
+      <Wrapper>
+
+        <Comments emailUser={this.state.user.email} comments={this.state.comments} />
+        {this.state.isLoading && <p>Carregando...</p>}
+        {this.state.isAuth && <NewCommnet sendComment={this.sendComment} />}
+       
+
         {this.state.isAuth && (
           <User email={this.state.user.email} logout={this.logout} />
         )}
@@ -134,10 +152,8 @@ class App extends Component {
           />
         )}
 
-        {this.state.isAuth && <NewCommnet sendComment={this.sendComment} />}
-        <Comments comments={this.state.comments} />
-        {this.state.isLoading && <p>Carregando...</p>}
-      </div>
+       
+      </Wrapper>
     );
   }
 }

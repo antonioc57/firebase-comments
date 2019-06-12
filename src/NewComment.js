@@ -1,4 +1,11 @@
 import React, { Component } from 'react';
+import styled from 'styled-components'
+
+const Wrapper = styled.div`
+  display:flex;
+  align-items:center;
+  justify-content:center;
+`
 
 class NewComment extends Component {
   state = {
@@ -17,11 +24,10 @@ class NewComment extends Component {
   };
   render() {
     return (
-      <div>
-        <textarea value={this.state.newComment} onChange={this.handleChange} />
-        <button onClick={this.sendComment}>Enviar</button>
-        {/*JSON.stringify(this.state)*/}
-      </div>
+      <Wrapper>
+        <input  className='input is-rounded' value={this.state.newComment} onChange={this.handleChange} />
+        <button className='button is-primary' onClick={this.sendComment}>Enviar</button>
+      </Wrapper>
     );
   }
 }

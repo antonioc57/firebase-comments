@@ -1,12 +1,12 @@
 import React from 'react';
 import Comment from './Comment';
 
-const Comments = ({ comments }) => {
+const Comments = ({ comments, emailUser }) => {
   const keys = Object.keys(comments);
   return (
     <div>
       {keys.map(key => (
-        <Comment key={key} c={comments[key]} />
+        <Comment emailUser={emailUser} key={key} c={comments[key]} />
       ))}
     </div>
   );

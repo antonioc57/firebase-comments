@@ -24,21 +24,21 @@ class Login extends Component {
         <h4>Entre para comentar:</h4>
         <form className='form-inline'>
             <input
-              className='form-control mr-2'
+              className='input is-rounded'
               type="text"
               onChange={this.handleChange('email')}
               placeholder="email"
             />
             <input
-              className='form-control mr-2'
+              className='input is-rounded'
               type="password"
               onChange={this.handleChange('passwd')}
               placeholder="senha"
             />
-            <button className='btn btn-primary' type="button" onClick={this.login}>
+            <button className='button is-primary' type="button" onClick={this.login}>
               Entrar
             </button>
-            <button className='btn' onClick={() => this.props.changeScreen('signup')}>
+            <button className='button is-primary' onClick={() => this.props.changeScreen('signup')}>
               Criar Conta
             </button>
            {/*JSON.stringify(this.state)*/}

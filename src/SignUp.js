@@ -24,21 +24,21 @@ class SignUp extends Component {
         <h4>Criar Conta</h4>
         <form className='form-inline'>
           <input
-            className='form-control mr-2'
+            className='input is-rounded'
             type="text"
             onChange={this.handleChange('email')}
             placeholder="email"
           />
           <input
-            className='form-control mr-2'
+            className='input is-rounded'
             type="password"
             onChange={this.handleChange('passwd')}
             placeholder="senha"
           />
-          <button className='btn btn-primary' type="button" onClick={this.createAccount}>
+          <button className='button is-primary' type="button" onClick={this.createAccount}>
             Criar conta
           </button>
-          <button className='btn' onClick={() => this.props.changeScreen('login')}>
+          <button className='button is-primary' onClick={() => this.props.changeScreen('login')}>
             Já tenho uma conta, entrar!
           </button>
         {/*JSON.stringify(this.state)*/}
