@@ -1,5 +1,21 @@
 import React, { Component } from 'react';
+import styled from 'styled-components'
 
+
+const Btns = styled.button`
+  margin-right:0.7rem !important;
+  margin-bottom:0.4rem;
+`
+
+const Inputs = styled.input`
+  margin-bottom:0.4rem;
+`
+
+const TitleH4 = styled.h4`
+  color:black;
+  margin-bottom:0.4rem;
+`
+ 
 class Login extends Component {
   state = {
     email: '',
@@ -21,26 +37,26 @@ class Login extends Component {
     };
     return (
       <div>
-        <h4>Entre para comentar:</h4>
+        <TitleH4>Entre para comentar:</TitleH4>
         <form className='form-inline'>
-            <input
+            <Inputs
               className='input is-rounded'
               type="text"
               onChange={this.handleChange('email')}
               placeholder="email"
             />
-            <input
+            <Inputs
               className='input is-rounded'
               type="password"
               onChange={this.handleChange('passwd')}
               placeholder="senha"
             />
-            <button className='button is-primary' type="button" onClick={this.login}>
+            <Btns className='button is-primary' type="button" onClick={this.login}>
               Entrar
-            </button>
-            <button className='button is-primary' onClick={() => this.props.changeScreen('signup')}>
+            </Btns>
+            <Btns className='button is-primary' onClick={() => this.props.changeScreen('signup')}>
               Criar Conta
-            </button>
+            </Btns>
            {/*JSON.stringify(this.state)*/}
         </form>
         {this.props.isAuthError && (

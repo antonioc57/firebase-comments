@@ -9,7 +9,7 @@ const Comments = ({ comments, emailUser }) => {
         <Comment emailUser={emailUser} key={key} c={comments[key]} />
       ))}
     </div>
-  );
+   );
 };
 
 export default Comments;

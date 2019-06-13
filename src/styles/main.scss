@@ -29,19 +29,32 @@ $grey-light: $beige-light;
 //$primary: $purple;
 $link: $green-dark;
 
-
 // Update some of Bulma's component variables
-$body-background-color: $beige-lighter;
 $control-border-width: 2px;
 $family-sans-serif: $sourcePro;
-
-
-
 
 // Import only what you need from Bulma
 @import "../../node_modules/bulma/bulma.sass";
 
 
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+   
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent; 
+  }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background:$primary; 
+    border-radius: 3rem;
+  }
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
 
 
 

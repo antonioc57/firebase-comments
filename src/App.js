@@ -11,12 +11,45 @@ import papel from './papel-de-parede2.png'
 
 import './styles/main.scss';
 
-
 const Wrapper = styled.div`
   background:url(${papel}) 0 0 !important;
-  padding: 2rem !important;
+  padding: 1rem !important;
   width:300px;
+  margin:0 auto;
+ 
 `
+const UserContent = styled.div`
+  padding-top:2rem;
+
+`
+const WrapperComments = styled.div`
+  height:400px;
+  overflow-y:scroll;
+`
+
+const TargetElScr = styled.div`
+    float:"left";
+    clear: "both"; 
+`
+
+const HeaderChat = styled.div`
+  height:40px;
+  background-color:#00d1b2;
+  width:300px;
+  margin:0 auto;
+  padding:1rem;
+  display:flex;
+  align-items:center;
+  justify-content:left;
+  color:#FFF;
+  font-weight:700;
+  border-top-left-radius:0.4rem;
+  border-top-right-radius:0.4rem;
+`
+
+
+
+
 
 class App extends Component {
   state = {
@@ -110,6 +143,8 @@ class App extends Component {
         });
       }
     });
+
+    this.scrollToBottom();
   }
 
   logout = () => {
@@ -123,37 +158,56 @@ class App extends Component {
     });
   };
 
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom = () => {
+    this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+  }
+
   render() {
     return (
+      <div>
+      <HeaderChat>
+        CHAT
+      </HeaderChat>
       <Wrapper>
 
-        <Comments emailUser={this.state.user.email} comments={this.state.comments} />
-        {this.state.isLoading && <p>Carregando...</p>}
-        {this.state.isAuth && <NewCommnet sendComment={this.sendComment} />}
-       
+        
 
-        {this.state.isAuth && (
-          <User email={this.state.user.email} logout={this.logout} />
-        )}
-        {!this.state.isAuth && this.state.userScreen === 'login' && (
-          <Login
-            login={this.login}
-            isAuthError={this.state.isAuthError}
-            authError={this.state.authError}
-            changeScreen={this.changeScreen}
-          />
-        )}
-        {!this.state.isAuth && this.state.userScreen === 'signup' && (
-          <SignUp
-            createAccount={this.createAccount}
-            isSignUpError={this.state.isSignUpError}
-            signUpError={this.state.signUpError}
-            changeScreen={this.changeScreen}
-          />
-        )}
+        <WrapperComments>
+          <Comments emailUser={this.state.user.email} comments={this.state.comments} />
+          {this.state.isLoading && <p>Carregando...</p>}
+          <TargetElScr ref={(el) => { this.messagesEnd = el; }} />
+        </WrapperComments>
+        
+        <UserContent>
+          {this.state.isAuth && <NewCommnet sendComment={this.sendComment} />}
+          {this.state.isAuth && (
+            <User email={this.state.user.email} logout={this.logout} />
+          )}
+          {!this.state.isAuth && this.state.userScreen === 'login' && (
+            <Login
+              login={this.login}
+              isAuthError={this.state.isAuthError}
+              authError={this.state.authError}
+              changeScreen={this.changeScreen}
+            />
+          )}
+          {!this.state.isAuth && this.state.userScreen === 'signup' && (
+            <SignUp
+              createAccount={this.createAccount}
+              isSignUpError={this.state.isSignUpError}
+              signUpError={this.state.signUpError}
+              changeScreen={this.changeScreen}
+            />
+          )}
+        </UserContent>
 
        
       </Wrapper>
+      </div>
     );
   }
 }

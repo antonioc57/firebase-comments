@@ -1,4 +1,20 @@
 import React, { Component } from 'react';
+import styled from 'styled-components'
+
+
+const Btns = styled.button`
+  margin-right:0.7rem !important;
+  margin-bottom:0.4rem;
+`
+
+const Inputs = styled.input`
+  margin-bottom:0.4rem;
+`
+const TitleH4 = styled.h4`
+  color:black;
+  margin-bottom:0.4rem;
+`
+ 
 
 class SignUp extends Component {
   state = {
@@ -21,26 +37,26 @@ class SignUp extends Component {
     };
     return (
       <div>
-        <h4>Criar Conta</h4>
+        <TitleH4>Criar Conta</TitleH4>
         <form className='form-inline'>
-          <input
+          <Inputs
             className='input is-rounded'
             type="text"
             onChange={this.handleChange('email')}
             placeholder="email"
           />
-          <input
+          <Inputs
             className='input is-rounded'
             type="password"
             onChange={this.handleChange('passwd')}
             placeholder="senha"
           />
-          <button className='button is-primary' type="button" onClick={this.createAccount}>
+          <Btns className='button is-primary' type="button" onClick={this.createAccount}>
             Criar conta
-          </button>
-          <button className='button is-primary' onClick={() => this.props.changeScreen('login')}>
+          </Btns>
+          <Btns className='button is-primary' onClick={() => this.props.changeScreen('login')}>
             Já tenho uma conta, entrar!
-          </button>
+          </Btns>
         {/*JSON.stringify(this.state)*/}
         </form>
         {this.props.isSignUpError && (
